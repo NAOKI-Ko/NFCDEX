@@ -33,7 +33,7 @@ struct NFCScanStateMachine {
     @discardableResult
     mutating func begin(isReaderAvailable: Bool) -> Bool {
         guard isReaderAvailable else {
-            state = .unsupported(.unknownTagProtocol)
+            state = .error(.readerUnavailable)
             return false
         }
 

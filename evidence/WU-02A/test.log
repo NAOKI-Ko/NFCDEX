@@ -6,4 +6,4 @@ Tests: 9
 Failures: 0
 Simulator: iPhone 16 Pro Max
 Simulator OS: iOS 26.5
-Coverage: fingerprint determinism, golden vector, protocol separation, protocol inputs, empty identifier, state reset, unsupported handling
+Coverage: fingerprint determinism, golden vector, protocol separation, protocol inputs, empty identifier, state reset, reader-unavailable / unknown-protocol separation, unsupported handling

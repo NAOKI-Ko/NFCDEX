@@ -89,11 +89,12 @@ final class NFCDEXTests: XCTestCase {
         XCTAssertEqual(stateMachine.state, .idle)
     }
 
-    func testUnavailableReaderDoesNotEnterScanning() {
+    func testUnavailableReaderIsDistinctFromUnknownTagProtocol() {
         var stateMachine = NFCScanStateMachine()
 
         XCTAssertFalse(stateMachine.begin(isReaderAvailable: false))
-        XCTAssertEqual(stateMachine.state, .unsupported(.unknownTagProtocol))
+        XCTAssertEqual(stateMachine.state, .error(.readerUnavailable))
+        XCTAssertNotEqual(stateMachine.state, .unsupported(.unknownTagProtocol))
     }
 
     func testMissingIdentifierIsNotMisclassifiedAsSuccess() {

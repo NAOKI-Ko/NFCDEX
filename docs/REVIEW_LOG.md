@@ -43,3 +43,12 @@
 - Diagnostic: protocol、identifier byte length、v1 fingerprint、same-launch rescan comparison。Raw identifierは非表示・非永続化。
 - Human Device Gate: PENDING。接続されたiPhone 17が`unavailable`で、実NFC scan evidenceは未取得。
 - Stop gate: WU-02B/C not authorized。
+
+## 2026-08-15 — WU-02A Correction Pass
+
+- Review target: `cf3ede109f2f7ebee2f683d1b94afe23c2bb5903`
+- Decision: CHANGES REQUESTED
+- Correction: `readingAvailable == false`を`.error(.readerUnavailable)`として、`.unsupported(.unknownTagProtocol)`から分離。
+- Unit test contract: reader unavailableとの一致、およびunknown tag protocolとの不一致を検証。
+- Human Device Gate: PENDINGのまま。結果の追加・変更なし。
+- Stop gate: WU-02B/C not authorized。
