@@ -1,0 +1,9 @@
+WU-01 build evidence
+Date: 2026-08-15 JST
+Tool: Xcode 26.6 (Build 17F113)
+Command: xcodebuild build -project NFCDEX.xcodeproj -scheme NFCDEX -destination 'generic/platform=iOS Simulator' -derivedDataPath work/DerivedData CODE_SIGNING_ALLOWED=NO
+Result: ** BUILD SUCCEEDED **
+Exit code: 0
+
+Note: An initial run exposed an execution-environment restriction in the optional #Preview macro plugin. The preview-only declaration was removed; no runtime application behavior changed.
+

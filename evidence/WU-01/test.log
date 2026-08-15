@@ -1,0 +1,10 @@
+WU-01 test evidence
+Date: 2026-08-15 JST
+Tool: Xcode 26.6 (Build 17F113)
+Destination: iPhone 17 Pro, iOS 26.5, arm64 Simulator (9D870918-AC43-4F0C-9C63-49B824D22C5B)
+Command: xcodebuild test -project NFCDEX.xcodeproj -scheme NFCDEX -destination 'platform=iOS Simulator,id=9D870918-AC43-4F0C-9C63-49B824D22C5B' -derivedDataPath work/TestDerivedDataFinal CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES ARCHS=arm64
+Result: ** TEST SUCCEEDED **
+Exit code: 0
+Tests: 1 executed, 0 failures, 0 unexpected
+Test case: NFCDEXTests.testFoundationTargetLoads
+

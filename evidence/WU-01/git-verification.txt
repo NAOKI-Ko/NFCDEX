@@ -1,0 +1,10 @@
+WU-01 Git verification
+Date: 2026-08-15 JST
+Repository: https://github.com/NAOKI-Ko/NFCDEX
+Visibility: Public (explicit user change from the original Private request)
+Branch: main
+Verification commands:
+  git rev-parse HEAD
+  git ls-remote --heads origin main
+  git status --short --branch
+Expected and verified outcome at WU-01 report: local HEAD equals origin/main and working tree is clean.
