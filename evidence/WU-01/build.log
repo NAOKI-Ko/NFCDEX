@@ -1,9 +1,8 @@
-WU-01 build evidence
+WU-01 Correction Pass build evidence
 Date: 2026-08-15 JST
 Tool: Xcode 26.6 (Build 17F113)
-Command: xcodebuild build -project NFCDEX.xcodeproj -scheme NFCDEX -destination 'generic/platform=iOS Simulator' -derivedDataPath work/DerivedData CODE_SIGNING_ALLOWED=NO
+Command: xcodebuild build -project NFCDEX.xcodeproj -scheme NFCDEX -destination 'generic/platform=iOS Simulator' -derivedDataPath work/CorrectionBuildDerivedData CODE_SIGNING_ALLOWED=NO
 Result: ** BUILD SUCCEEDED **
 Exit code: 0
 
-Note: An initial run exposed an execution-environment restriction in the optional #Preview macro plugin. The preview-only declaration was removed; no runtime application behavior changed.
-
+Scope note: Correction Pass changed documentation only. NFCDEX Swift / Xcode project files were unchanged from review target 27da6d3872b107b27e3bceafd66b60e533bb3f1c.

@@ -1,14 +1,18 @@
 # NFCDEX
 
-家庭内の家事・育児・見えない家事・家庭運営・経済的負担を記録し、貢献バランスを可視化するiOSアプリです。
+NFCDEXは、現実世界のNFCをスキャンすると、そのNFCに固定された変な生物と固有音を発見・収集できる「NFC × 生物図鑑 × 宝探し」のバカゲーです。
 
-現在は **WU-01 Repository Bootstrap** 完了時点です。SwiftUIの起動可能な最小骨格と、AIエージェントが別環境でも作業状態を復元できるPortable AI Memoryを収録しています。アプリ機能の実装はまだ開始していません。
+現在は **WU-01 Repository Bootstrap + Correction Pass完了** 時点です。起動可能な最小SwiftUI skeletonとXCTest target、Notion NFCDEX仕様に同期したPortable AI Memory / Git docsだけを収録しています。CoreNFC、CreatureResolver、SwiftData、Audio/Haptics、Discovery UI、Official NFC cryptoは未実装です。
 
-## Requirements
+## Foundation
 
-- Xcode 26.6（検証環境）
-- iOS 17.0+
-- Swift 5
+- Repository: [NAOKI-Ko/NFCDEX](https://github.com/NAOKI-Ko/NFCDEX)
+- Visibility: Public
+- Default branch: `main`
+- iOS 17+
+- SwiftUI + XCTest
+- Backend / Supabaseなし
+- External SDKなし
 
 ## Build / Test
 
@@ -17,18 +21,20 @@ xcodebuild build \
   -project NFCDEX.xcodeproj \
   -scheme NFCDEX \
   -destination 'generic/platform=iOS Simulator' \
-  -derivedDataPath .derived-data \
+  -derivedDataPath work/DerivedData \
   CODE_SIGNING_ALLOWED=NO
 
 xcodebuild test \
   -project NFCDEX.xcodeproj \
   -scheme NFCDEX \
-  -destination 'platform=iOS Simulator,name=<available simulator>' \
-  -derivedDataPath .derived-data \
-  CODE_SIGNING_ALLOWED=NO
+  -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
+  -derivedDataPath work/TestDerivedData \
+  CODE_SIGNING_ALLOWED=NO \
+  ONLY_ACTIVE_ARCH=YES \
+  ARCHS=arm64
 ```
 
 ## Start here
 
-AIまたは人間が作業を再開するときは、[AGENTS.md](AGENTS.md) と [docs/ai-memory/INDEX.md](docs/ai-memory/INDEX.md) を先に読みます。
+作業再開時は、[AGENTS.md](AGENTS.md)の後に[docs/START_HERE.md](docs/START_HERE.md)から標準docsを順番に読みます。`docs/ai-memory/`は標準docsへのportable indexであり、代替の正本ではありません。
 

@@ -1,31 +1,44 @@
 # AGENTS.md
 
-## Scope
+## Project identity
 
-NFCDEXは家庭内貢献バランス可視化iOSアプリです。作業はWork Unit（WU）単位で実施し、承認されたWU以外へ進みません。
+NFCDEXは、現実世界のNFCをスキャンすると、そのNFCに固定された変な生物と固有音を発見・収集できる「NFC × 生物図鑑 × 宝探し」のバカゲーです。
 
-## Source of truth order
+## Source of truth
 
-1. ユーザーが明示した最新のNFCDEX仕様・指示
-2. `docs/ai-memory/PROJECT_STATE.md`
-3. `docs/ai-memory/WORK_UNITS.md`
-4. `docs/ai-memory/DECISIONS.md`
-5. `docs/ai-memory/HANDOFF.md`
-6. 実装・テスト・Git履歴
+実装・文書変更の前に、次の順序で読みます。
 
-矛盾がある場合は上位を優先し、推測で後続WUへ進めないでください。
+1. ユーザーが明示した最新指示
+2. NotionのNFCDEX親ページと `01 PRODUCT_SPEC`〜`06 ASSET_PLAN`
+3. `docs/START_HERE.md`
+4. `docs/PROJECT_STATE.md`
+5. `docs/PRODUCT_SPEC.md`
+6. `docs/GAME_RULES.md`
+7. `docs/IMPLEMENTATION_PLAN.md`
+8. `docs/QA_CHECKLIST.md`
+9. `docs/CODEX_REPORT.md`
+10. `docs/REVIEW_LOG.md`
+11. 実装・テスト・Git履歴
 
-## Required workflow
+`docs/ai-memory/`はportableな補助indexです。標準docsの代替ではなく、矛盾した場合は標準docsを正とします。
 
-`Scope → Implement → Build → Test → Evidence → Commit → Push → Local/Remote SHA verification → Report → Stop`
+## Work Unit contract
+
+`Scope → Implementation → Build → Test → Evidence → Commit → Push → SHA verification → Report → Human review → Stop`
 
 - 1回にactiveにできるWUは1つです。
-- WUのOut of Scopeを変更しません。
-- 完了時はPortable AI MemoryとEvidenceを実態に合わせて更新します。
-- secret、token、実ユーザーデータ、個人情報をcommitしません。
-- 外部依存の追加、production変更、後続WU開始は明示承認が必要です。
+- ユーザーが指定したWUだけを実行し、次WUへ自動進行しません。
+- Notionで確定した確率・identity・version・securityルールを独自変更しません。
+- secret、秘密鍵、token、実ユーザーデータをcommitしません。
+- force pushは禁止です。
+- External SDK、Backend、Supabaseは明示承認なしに追加しません。
 
-## WU-01 stop gate
+## Current stop gate
 
-WU-01完了後は報告して停止します。WU-02A、WU-02B、WU-02Cには着手しません。
+WU-01 Correction Pass完了後に停止します。次を開始してはいけません。
+
+- WU-02A CoreNFC Input + Fingerprint
+- WU-02B Creature Catalog + Resolver
+- WU-02C Audio / Haptics / Effect Runtime
+- SwiftData model、Discovery UI、Official NFC crypto、Backend、External SDK
 

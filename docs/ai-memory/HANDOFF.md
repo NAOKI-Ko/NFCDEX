@@ -1,6 +1,6 @@
 # Handoff
 
-## Restore context
+## Restore
 
 ```sh
 git clone https://github.com/NAOKI-Ko/NFCDEX.git
@@ -9,29 +9,17 @@ git status --short --branch
 git rev-parse HEAD
 ```
 
-その後、`AGENTS.md`から`docs/ai-memory/INDEX.md`のreading orderを読みます。
+次に`AGENTS.md`と`docs/START_HERE.md`から標準docsを順番に読みます。
 
-## Verify foundation
+## Current boundary
 
-```sh
-xcodebuild build \
-  -project NFCDEX.xcodeproj \
-  -scheme NFCDEX \
-  -destination 'generic/platform=iOS Simulator' \
-  -derivedDataPath .derived-data \
-  CODE_SIGNING_ALLOWED=NO
-```
+- WU-01 Correction Pass完了後に停止する。
+- WU-02A/B/Cを開始しない。
+- CoreNFC、CreatureResolver、SwiftData、Audio/Haptics、Discovery UI、Official NFC cryptoを実装しない。
+- Backend、Supabase、External SDKを追加しない。
 
-テストは`xcrun simctl list devices available`で利用可能な端末名を確認して実行します。
+## Resume safety
 
-## Current handoff boundary
-
-- WU-01完了報告で停止。
-- WU-02A/B/Cへ進まない。
-- 次の作業は、ユーザーが正本NFCDEXに基づく次WUを明示承認した後のみ開始。
-
-## Safety
-
-- secret、token、Apple Team ID、production identifierをdocsへ貼らない。
-- GitHub remoteと想定visibility（現在はPublic）を作業前後に確認する。
-- 作業開始前にlocal/remote SHAとdirty stateを確認する。
+- 作業開始前にlocal/remote SHA、ahead/behind、dirty stateを確認する。
+- Public visibilityを維持し、Privateへ戻さない。
+- Notion仕様と標準Git docsに差異があれば実装を止め、Human Gateへ戻す。

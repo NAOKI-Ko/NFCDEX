@@ -1,4 +1,4 @@
-WU-01 Git verification
+WU-01 Correction Pass Git verification
 Date: 2026-08-15 JST
 Repository: https://github.com/NAOKI-Ko/NFCDEX
 Visibility: Public (explicit user change from the original Private request)
@@ -8,3 +8,6 @@ Verification commands:
   git ls-remote --heads origin main
   git status --short --branch
 Expected and verified outcome at WU-01 report: local HEAD equals origin/main and working tree is clean.
+Ahead/behind expected and verified outcome: 0/0.
+Review target preserved in history: 27da6d3872b107b27e3bceafd66b60e533bb3f1c.
+Correction commit exact SHA is reported after push because a commit cannot contain its own final SHA.

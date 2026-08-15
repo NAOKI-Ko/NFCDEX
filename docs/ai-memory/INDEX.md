@@ -1,19 +1,23 @@
 # Portable AI Memory — Index
 
-このディレクトリは、特定のAIサービスや会話履歴に依存せず、Git cloneだけで作業状態を復元するための記憶層です。
+このディレクトリは、Git cloneだけで作業状態を復元するための補助indexです。NFCDEXの正式なGit正本は`docs/`直下の標準docsであり、ここは代替しません。
 
-## Reading order
+## Required reading order
 
-1. `../../AGENTS.md` — 守るべき実行規約
-2. `PROJECT_STATE.md` — 現在地と停止点
-3. `WORK_UNITS.md` — WU境界と完了条件
-4. `DECISIONS.md` — 採用済み判断と仮定
-5. `HANDOFF.md` — 次の担当者向け再開手順
+1. `../../AGENTS.md`
+2. `../START_HERE.md`
+3. `../PROJECT_STATE.md`
+4. `../PRODUCT_SPEC.md`
+5. `../GAME_RULES.md`
+6. `../IMPLEMENTATION_PLAN.md`
+7. `../QA_CHECKLIST.md`
+8. `../CODEX_REPORT.md`
+9. `../REVIEW_LOG.md`
+10. `DECISIONS.md` / `HANDOFF.md`
 
-## Update contract
+## No-contradiction rule
 
-- 各WU完了時に全ファイルの整合性を確認します。
-- 事実と未決定事項を分離し、会話だけに残さないでください。
-- SHA、コマンド、テスト結果など再検証可能な事実はEvidenceへ記録します。
-- credentialやsecretは記録しません。
+- 標準docsと内容が重なる場合、標準docsを正とします。
+- WU状態・仕様値・repository visibilityを独自に上書きしません。
+- secret、token、private key、実ユーザーデータを記録しません。
 

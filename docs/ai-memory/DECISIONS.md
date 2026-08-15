@@ -1,36 +1,25 @@
-# Decisions
+# Portable Decision Summary
 
-## D-001 — Minimal native foundation
+詳細な仕様は`../PRODUCT_SPEC.md`と`../GAME_RULES.md`を正とします。
 
-- Date: 2026-08-15
-- Status: Accepted for WU-01
-- Decision: SwiftUI + XCTestのみを使用し、third-party dependencyを追加しない。
-- Reason: WU-01の再現可能な最小骨格に限定するため。
+## Foundation decisions
 
-## D-002 — Deployment target
+- Repository: `NAOKI-Ko/NFCDEX`
+- Visibility: Public（最新ユーザー指示）
+- Default branch: `main`
+- iOS 17+ SwiftUI skeleton + XCTest
+- Backend / Supabaseなし
+- External SDKなしを原則とする
+- 開発名 / Resume Key: `NFCDEX`
 
-- Date: 2026-08-15
-- Status: Provisional
-- Decision: iOS 17.0以上。
-- Reason: SwiftUIの安定したbaselineとして使用し、後続Human Gateで変更可能にするため。
+## Frozen MVP decisions
 
-## D-003 — Development identity
-
-- Date: 2026-08-15
-- Status: Provisional
-- Decision: Product module `NFCDEX`、開発用Bundle ID `com.naoki.nfcdex`。
-- Reason: signingなしのBuild/Testに必要な安定識別子。distribution確定を意味しない。
-
-## D-004 — Git is portable memory
-
-- Date: 2026-08-15
-- Status: Accepted
-- Decision: 現在地、WU境界、判断、再開手順を`docs/ai-memory/`へcommitする。
-- Reason: 特定のAI会話・端末・vendor memoryへ依存しないため。
-
-## D-005 — Repository visibility
-
-- Date: 2026-08-15
-- Status: Accepted by explicit user instruction
-- Decision: `NAOKI-Ko/NFCDEX`をPublic repositoryとして運用する。
-- Reason: 当初のPrivate指定は、作成直前のユーザー指示「publicでいいよ」により変更された。
+- 同一NFCは同一生物・同一variantを返す。
+- creature = species + color / face / accessory variant。
+- 図鑑コンプリートはspecies単位。
+- normal rarityはCOMMON 72% / UNCOMMON 22% / RARE 6% / LEGENDARY 0% / SECRET 0%。
+- LEGENDARYはMVPでは公式NFC専用。将来の超低確率anomalyはMVP外。
+- identity v1は`protocolType + hardwareIdentifier → SHA-256 → TagFingerprint`。
+- `resolverVersion = 1`。catalog拡張で既存個体をsilently changeさせない。
+- official NFCはsigned payload verification必須。hardware identifierだけではofficialにしない。
+- 初期36音は自録り + 加工中心でrights trackingする。
