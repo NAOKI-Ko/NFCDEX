@@ -24,3 +24,12 @@
 - No application feature implementation。
 - Next action: ChatGPT exact remote SHA review。
 - Stop gate: WU-02A/B/C not authorized。
+
+## 2026-08-15 — WU-01 Review Receipt
+
+- Decision: APPROVE
+- Reviewed commit: `19698e602cd6acb368b6c29317188c1e404103cc`
+- Acceptance result: WU-01 acceptance criteria satisfied。
+- Verified: exact GitHub SHA、`main` HEAD、required standard docs 8/8、NFCDEX仕様同期、旧project contamination 0件、WU-02A/B/C未着手。
+- Next authorized work: WU-02A — NFC Input + Fingerprint。
+- Review Sync boundary: WU-02Aは開始しない。

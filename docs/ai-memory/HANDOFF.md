@@ -13,8 +13,9 @@ git rev-parse HEAD
 
 ## Current boundary
 
-- WU-01 Correction Pass完了後に停止する。
-- WU-02A/B/Cを開始しない。
+- WU-01はreviewed commit `19698e602cd6acb368b6c29317188c1e404103cc`でAPPROVED。
+- Next authorized workはWU-02A — NFC Input + Fingerprint。ただし、このReview Syncでは開始しない。
+- 明示的なWU-02A実行依頼を受けるまで停止する。
 - CoreNFC、CreatureResolver、SwiftData、Audio/Haptics、Discovery UI、Official NFC cryptoを実装しない。
 - Backend、Supabase、External SDKを追加しない。
 

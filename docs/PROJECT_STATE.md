@@ -6,9 +6,12 @@
 - Repository: `NAOKI-Ko/NFCDEX`
 - Visibility: Public
 - Default branch: `main`
-- Current authorized work: WU-01 Correction Pass only
-- Current state: Correction Pass complete; exact remote commit review pending
-- Next gate: ChatGPT exact-SHA review
+- Last completed work: WU-01 — APPROVED
+- Reviewed commit: `19698e602cd6acb368b6c29317188c1e404103cc`
+- Current active work unit: None
+- Current state: WU-01 Human Gate PASS
+- Next authorized work: WU-02A — NFC Input + Fingerprint
+- Next gate: Await explicit WU-02A execution request
 
 ## Completed foundation
 
