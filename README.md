@@ -2,7 +2,7 @@
 
 NFCDEXは、現実世界のNFCをスキャンすると、そのNFCに固定された変な生物と固有音を発見・収集できる「NFC × 生物図鑑 × 宝探し」のバカゲーです。
 
-現在は **WU-01 Repository Bootstrap + Correction Pass完了** 時点です。起動可能な最小SwiftUI skeletonとXCTest target、Notion NFCDEX仕様に同期したPortable AI Memory / Git docsだけを収録しています。CoreNFC、CreatureResolver、SwiftData、Audio/Haptics、Discovery UI、Official NFC cryptoは未実装です。
+現在は **WU-02A NFC Input + Fingerprint実装・automated verification完了 / Human Device Gate待ち** です。CoreNFCから通常NFCのhardware identity候補を取得し、versioned domain separatorを含むSHA-256 TagFingerprint v1を生成するdiagnosticを収録しています。Raw hardware identifierは表示・永続化しません。CreatureResolver、SwiftData、Audio/Haptics、Discovery UI、Official NFC cryptoは未実装です。
 
 ## Foundation
 
@@ -11,6 +11,8 @@ NFCDEXは、現実世界のNFCをスキャンすると、そのNFCに固定さ�
 - Default branch: `main`
 - iOS 17+
 - SwiftUI + XCTest
+- CoreNFC diagnostic: MIFARE / ISO15693 / ISO7816 / FeliCa code paths
+- TagFingerprint v1: CryptoKit SHA-256
 - Backend / Supabaseなし
 - External SDKなし
 
@@ -37,4 +39,3 @@ xcodebuild test \
 ## Start here
 
 作業再開時は、[AGENTS.md](AGENTS.md)の後に[docs/START_HERE.md](docs/START_HERE.md)から標準docsを順番に読みます。`docs/ai-memory/`は標準docsへのportable indexであり、代替の正本ではありません。
-

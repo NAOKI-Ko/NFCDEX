@@ -33,3 +33,13 @@
 - Verified: exact GitHub SHA、`main` HEAD、required standard docs 8/8、NFCDEX仕様同期、旧project contamination 0件、WU-02A/B/C未着手。
 - Next authorized work: WU-02A — NFC Input + Fingerprint。
 - Review Sync boundary: WU-02Aは開始しない。
+
+## 2026-08-15 — WU-02A Implementation
+
+- Review base: `64636be503905a232418dec094163ce4689a95e2`
+- Scope: NFC Input + Fingerprint only。
+- Automated result: generic iOS build PASS、9 tests / 0 failures。
+- Supported code paths: MIFARE / ISO15693 / ISO7816 / FeliCa。
+- Diagnostic: protocol、identifier byte length、v1 fingerprint、same-launch rescan comparison。Raw identifierは非表示・非永続化。
+- Human Device Gate: PENDING。接続されたiPhone 17が`unavailable`で、実NFC scan evidenceは未取得。
+- Stop gate: WU-02B/C not authorized。

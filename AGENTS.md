@@ -35,10 +35,8 @@ NFCDEXは、現実世界のNFCをスキャンすると、そのNFCに固定さ�
 
 ## Current stop gate
 
-WU-01 Correction Pass完了後に停止します。次を開始してはいけません。
+WU-02Aのimplementationとautomated verificationは完了し、実機Human Device Gate待ちです。WU-02A Review Syncまたは明示的な次WU承認までは停止し、次を開始してはいけません。
 
-- WU-02A CoreNFC Input + Fingerprint
 - WU-02B Creature Catalog + Resolver
 - WU-02C Audio / Haptics / Effect Runtime
 - SwiftData model、Discovery UI、Official NFC crypto、Backend、External SDK
-

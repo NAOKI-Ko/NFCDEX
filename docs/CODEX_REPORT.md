@@ -1,74 +1,69 @@
-# CODEX_REPORT — WU-01 Correction Pass
+# CODEX_REPORT — WU-02A NFC Input + Fingerprint
 
 - Date: 2026-08-15
-- Review target: `27da6d3872b107b27e3bceafd66b60e533bb3f1c`
-- Review decision: CHANGES REQUESTED
-- Scope: documentation correction only
-- App feature changes: none
-- WU-02A/B/C: not started
+- Review base: `64636be503905a232418dec094163ce4689a95e2`
+- Source of truth: Notion `05 CODEX_HANDOFF — NFCDEX`
+- Scope: WU-02A only
+- WU-02B/C: not started
 
-## Objective
+## Implementation
 
-既存SwiftUI skeletonを維持し、誤った別project文脈を完全に除去して、Notion NFCDEX仕様を正式なPortable AI Memory / standard Git docsへ同期する。
+- CoreNFC reader abstraction using `NFCTagReaderSession`。
+- Scan states: idle / scanning / success / cancelled / error / unsupported。
+- Hardware identity paths:
+  - MIFARE `identifier`
+  - ISO15693 `identifier`
+  - ISO7816 `identifier`
+  - FeliCa `currentIDm`
+- NFC Forum diagnostic declarations:
+  - Type 4 NDEF application AID `D2760000850101`
+  - Type 3 system code `12FC`
+- Canonical identity v1 uses a versioned domain separator, protocol type, and hardware identifier。
+- SHA-256 via Apple CryptoKit; no external SDK。
+- Empty identifiers fail closed as unsupported。
+- NDEF payload is not used as physical identity。
+- Raw hardware identifiers are neither displayed nor persisted。
 
-## Notion sources read
+## Unit Test
 
-- 01 PRODUCT_SPEC — NFCDEX
-- 02 GAME_RULES — NFCDEX
-- 03 IMPLEMENTATION_PLAN — NFCDEX
-- 04 QA_CHECKLIST — NFCDEX
-- 05 CODEX_HANDOFF — NFCDEX
-- 06 ASSET_PLAN — NFCDEX
+- Result: PASS
+- Count: 9 tests / 0 failures
+- Coverage: 100-run determinism、fixed digest vector、protocol domain separation、all four protocol domain inputs、empty-ID rejection、cancel/error reset、unavailable/unsupported handling。
+- Simulator: iPhone 16 Pro Max simulator / iOS 26.5
 
-## Files changed
+## Build
 
-- `AGENTS.md`
-- `README.md`
-- `docs/ai-memory/INDEX.md`
-- `docs/ai-memory/PROJECT_STATE.md`
-- `docs/ai-memory/WORK_UNITS.md`
-- `docs/ai-memory/DECISIONS.md`
-- `docs/ai-memory/HANDOFF.md`
-- `docs/QA_CHECKLIST.md`
-- `evidence/WU-01/build.log`
-- `evidence/WU-01/test.log`
-- `evidence/WU-01/git-verification.txt`
+- Result: PASS
+- Destination: generic iOS device
+- Configuration: Debug
+- Code signing: disabled for CI-style compile verification
+- CoreNFC entitlement and Info.plist NFC declarations: validated
 
-## Files created
+## Human Device Gate
 
-- `docs/START_HERE.md`
-- `docs/PROJECT_STATE.md`
-- `docs/PRODUCT_SPEC.md`
-- `docs/GAME_RULES.md`
-- `docs/IMPLEMENTATION_PLAN.md`
-- `docs/CODEX_REPORT.md`
-- `docs/REVIEW_LOG.md`
+- Diagnostic presentation: implemented in `ContentView`。
+- Displays only protocol、identifier byte length、fingerprint version/digest、same-launch rescan comparison、device/iOS。
+- Connected device discovered: iPhone 17 (`iPhone18,3`)。
+- Device state: unavailable。
+- Tested physical tags/cards: none; physical scan is pending。
+- Deterministic rescan: pending physical device。
+- Restart result: pending physical device。
+- Instructions and evidence template: `evidence/WU-02A/HUMAN_GATE.md`。
 
-## Required validations
+## Scope exclusions verified
 
-- Old-project contamination search: PASS、指定7語0件
-- Required standard docs existence: PASS、8/8
-- Notion contract values: PASS、required identity / rarity / variant / resolver / official / sound / architecture valuesを確認
-- Build: `BUILD SUCCEEDED`
-- Test: `TEST SUCCEEDED`、1 test / 0 failures
-- Push / SHA / ahead-behind / clean: PASS。exact SHAはGit履歴とCorrection Pass完了報告を参照
+- CreatureResolver / rarity / species / variants: not implemented
+- SwiftData persistence: not implemented
+- Discovery UI: not implemented; diagnostic-only presentation
+- Audio / Haptics / effects: not implemented
+- Official NFC crypto: not implemented
+- Backend / Supabase / External SDK: not added
+- WU-02B/C: not started
 
 ## Blockers
 
-None known.
-
-## Review Receipt — 2026-08-15
-
-- Decision: APPROVE
-- Reviewed commit: `19698e602cd6acb368b6c29317188c1e404103cc`
-- Exact GitHub SHA and `main` HEAD: Verified
-- Required standard docs: 8/8 verified
-- NFCDEX product and architecture specification sync: Verified
-- Old-project contamination: 0 findings
-- WU-02A/B/C: Not started
-- Next authorized work: WU-02A — NFC Input + Fingerprint
-- Review Sync action: Receipt recorded only; WU-02A not started
+- Physical iPhone is unavailable to Xcode, so the required NFC Human Device Gate cannot be executed in this environment。
 
 ## Stop
 
-Review Sync完了後に停止する。WU-02A/B/Cへ進まない。
+Commit / push / Git verification後に停止する。WU-02B/Cへ進まない。

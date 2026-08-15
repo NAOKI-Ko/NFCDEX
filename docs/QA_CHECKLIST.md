@@ -31,12 +31,22 @@ Notion source: [04 QA_CHECKLIST — NFCDEX](https://app.notion.com/p/3bd8c2d3ffd
 - [x] ahead/behind 0/0。
 - [x] working tree clean。
 
-## Future NFC / fingerprint gate — not executed in WU-01
+## WU-02A NFC / fingerprint gate
 
-- [ ] reader start / cancel / timeout / unavailable / unsupported
-- [ ] MIFARE / ISO15693 / ISO7816 identifier、FeliCa IDmの実機安定性
-- [ ] 同一入力100回で同一fingerprint
-- [ ] NDEF payload単体をphysical identityにしない
+- [x] reader start / cancel / unavailable / unsupported state handling
+- [x] cancel / error terminal stateからidleへreset可能
+- [x] MIFARE / ISO15693 / ISO7816 identifier、FeliCa IDm code path
+- [x] 同一入力100回で同一fingerprint
+- [x] protocol domain separation
+- [x] fixed SHA-256 test vector
+- [x] empty identifierを固有NFCとして扱わない
+- [x] NDEF payload単体をphysical identityにしない
+- [x] raw hardware identifierをdiagnosticへ表示・永続化しない
+- [x] Unit Test PASS（9 tests / 0 failures）
+- [x] generic iOS device Build PASS
+- [ ] MIFARE / ISO15693 / ISO7816 / FeliCaの実機identifier安定性
+- [ ] 同一tagの複数scanで同一fingerprint — Human Device Gate
+- [ ] app restart後も同一fingerprint — Human Device Gate
 - [ ] 実機NFC read — Human Device Gate
 
 ## Future Resolver gate — not executed in WU-01

@@ -13,10 +13,10 @@ git rev-parse HEAD
 
 ## Current boundary
 
-- WU-01はreviewed commit `19698e602cd6acb368b6c29317188c1e404103cc`でAPPROVED。
-- Next authorized workはWU-02A — NFC Input + Fingerprint。ただし、このReview Syncでは開始しない。
-- 明示的なWU-02A実行依頼を受けるまで停止する。
-- CoreNFC、CreatureResolver、SwiftData、Audio/Haptics、Discovery UI、Official NFC cryptoを実装しない。
+- WU-02A implementation / automated verification完了。実機Human Device Gateは接続iPhone unavailableのためpending。
+- `evidence/WU-02A/HUMAN_GATE.md`に従い、実機でrescan / restart determinismを確認する。
+- WU-02B/Cを開始しない。
+- CreatureResolver、SwiftData、Audio/Haptics、Discovery UI、Official NFC cryptoを実装しない。
 - Backend、Supabase、External SDKを追加しない。
 
 ## Resume safety

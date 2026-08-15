@@ -30,8 +30,8 @@ flowchart TD
 | WU | Name | State |
 |---|---|---|
 | WU-00 | Product / Game Design | CLOSED / Human Gate PASS — 2026-08-15 |
-| WU-01 | Repository Bootstrap + Skeleton | Implemented; Correction Pass complete; exact-SHA review pending |
-| WU-02A | NFC Input + Fingerprint | Not started / Not authorized |
+| WU-01 | Repository Bootstrap + Skeleton | CLOSED / APPROVED |
+| WU-02A | NFC Input + Fingerprint | Implemented / automated PASS / Human Device Gate pending |
 | WU-02B | Creature Catalog + Resolver | Not started / Not authorized |
 | WU-02C | Audio / Haptics / Effect Runtime | Not started / Not authorized |
 | WU-03〜07 | Integration through release | Not started / blocked by dependencies |
@@ -78,6 +78,13 @@ Cold Start可能なPublic repository、最小SwiftUI app、XCTest target、Porta
 
 実機NFCからhardware identityを取得し、identity v1を確定する。CoreNFC abstraction、scan state、canonicalization、SHA-256 TagFingerprintがscope。Creature UI / SwiftData / official cryptoはscope外。
 
+- Implementation: Complete
+- Automated verification: 9 tests / 0 failures、generic iOS build PASS
+- Supported code paths: MIFARE / ISO15693 / ISO7816 / FeliCa
+- Diagnostic declaration: NFC Forum Type 4 NDEF AID `D2760000850101`、Type 3 system code `12FC`
+- Human Device Gate: Pending because the connected physical iPhone is unavailable
+- Stop boundary: WU-02B/C not authorized
+
 ### WU-02B — Creature Catalog + Resolver
 
 pure domain testsでversioned Resolver v1、rarity config、species/variant resolutionを実装する。既存個体の再現性とbucket boundaryを検証する。
@@ -86,7 +93,7 @@ pure domain testsでversioned Resolver v1、rarity config、species/variant reso
 
 sound player / haptics abstraction、effect profile、preview harnessを実装する。実機qualityはHuman Gate。
 
-Correction Passでは上記WU-02A/B/Cを開始しない。
+WU-02A完了報告後は停止し、WU-02B/Cを開始しない。
 
 ## Review contract
 

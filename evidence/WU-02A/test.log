@@ -1,0 +1,9 @@
+WU-02A UNIT TEST EVIDENCE
+Date: 2026-08-15
+Command: xcodebuild -quiet -project NFCDEX.xcodeproj -scheme NFCDEX -configuration Debug -destination iOS Simulator test
+Result: PASS
+Tests: 9
+Failures: 0
+Simulator: iPhone 16 Pro Max
+Simulator OS: iOS 26.5
+Coverage: fingerprint determinism, golden vector, protocol separation, protocol inputs, empty identifier, state reset, unsupported handling

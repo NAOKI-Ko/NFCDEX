@@ -1,0 +1,8 @@
+WU-02A BUILD EVIDENCE
+Date: 2026-08-15
+Command: xcodebuild -quiet -project NFCDEX.xcodeproj -scheme NFCDEX -configuration Debug -destination generic/platform=iOS -derivedDataPath work/DerivedDataDevice CODE_SIGNING_ALLOWED=NO build
+Result: PASS (exit 0)
+Destination: generic iOS device
+Configuration: Debug
+Info.plist: NFCReaderUsageDescription, Type 3 system code 12FC, Type 4 NDEF AID D2760000850101 present
+Entitlement: com.apple.developer.nfc.readersession.formats = TAG
